@@ -9,10 +9,10 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class GameTest extends FunSuite with ShouldMatchers {
 
-  ignore("game initializes the first generation") {
+  test("game initializes the first generation") {
     val game = Game("""
     	ooo
-    	oxx
+        oxx
         ooo""")
         
     val gen = game.generation(0);
