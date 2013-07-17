@@ -9,13 +9,19 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class GenerationParserTest extends FunSuite with ShouldMatchers {
 
+  val parser = new GenerationParser()
+  
   test("throws exception when generation spec is not rectangular") {
-    val parser = new GenerationParser()
-    
     intercept[IllegalArgumentException] {
       parser.parseGen("""|oox
                          |ooo
                          |oo """.stripMargin)
+    }
+  }
+  
+  test("throws exception when generation spec is empty") {
+    intercept[IllegalArgumentException] {
+      parser.parseGen("")
     }
   }
 }
