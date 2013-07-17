@@ -1,11 +1,7 @@
 package net.kaczmarzyk.life
 
-import Game.Generation
-
 
 object Game {
-  
-  type Generation = Map[(Int, Int), Symbol]
   
   def apply(initialGenSpec: String) = {
     val initialGen = new GenerationParser().parseGen(initialGenSpec)
@@ -13,7 +9,7 @@ object Game {
   }
 }
 
-class Game(val initialGen: Map[(Int, Int), Symbol]) {
+class Game(val initialGen: Generation) {
 
   def generation(seq: Int): Generation = {
     if (seq == 0) initialGen

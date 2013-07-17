@@ -2,8 +2,8 @@ package net.kaczmarzyk.life
 
 class GenerationParser {
 
-  def parseGen(spec: String) = {
-    var gen = Map[(Int, Int), Symbol]().withDefaultValue('dead)
+  def parseGen(spec: String): Generation = {
+    var gen = Generation()
     val rows = split(spec)
     for {
       rowNum <- 0 until rows.size
