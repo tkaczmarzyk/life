@@ -17,6 +17,18 @@ class GenerationParserTest extends FunSuite with ShouldMatchers {
                          |ooo
                          |oo """.stripMargin)
     }
+    intercept[IllegalArgumentException] {
+      parser.parseGen("""|oox
+                         |oo 
+                         |ooo""".stripMargin)
+    }
+  }
+  
+  test("should allow trailing empty lines in the spec") {
+    parser.parseGen("""
+	    				oox
+	    				ooo
+	    					""")
   }
   
   test("throws exception when generation spec is empty") {

@@ -19,13 +19,13 @@ class GenerationParser {
   
   private def split(spec: String) = {
     val rows =
-      for (row <- spec.split('\n').reverse) yield row.trim()
+      for (row <- spec.trim.split('\n').reverse) yield row.trim()
       
     if (rows(0).size == 0)
       throw new IllegalArgumentException
     
     for (row <- rows)
-      if (row.size > rows(0).size) throw new IllegalArgumentException
+      if (row.size != rows(0).size) throw new IllegalArgumentException
       
     rows
   }
