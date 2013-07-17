@@ -8,23 +8,8 @@ object Game {
   type Generation = Map[(Int, Int), Symbol]
   
   def apply(initialGenSpec: String) = {
-    val initialGen = parseGen(initialGenSpec)
+    val initialGen = new GenerationParser().parseGen(initialGenSpec)
     new Game(initialGen)
-  }
-  
-  private def parseGen(spec: String) = {
-    var gen = Map[(Int, Int), Symbol]().withDefaultValue('dead)
-    val rows = spec.split('\n').reverse
-    for {
-      rowNum <- 0 until rows.size
-      row = rows(rowNum).trim()
-      colNum <- 0 until row.size
-      cellVal = row(colNum)
-      if cellVal == 'x'
-    } {
-      gen += (colNum, rowNum) -> 'alive
-    }
-    gen
   }
 }
 
